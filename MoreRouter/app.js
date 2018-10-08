@@ -2,10 +2,14 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+
+mongoose.connect('mongodb://node-shop:Kw61kFLXY48X5RWF@rest-shop-shard-00-00-paezo.mongodb.net:27017,rest-shop-shard-00-01-paezo.mongodb.net:27017,rest-shop-shard-00-02-paezo.mongodb.net:27017/test?ssl=true&replicaSet=rest-shop-shard-0&authSource=admin&retryWrites=true', {
+    useNewUrlParser: true
+});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
